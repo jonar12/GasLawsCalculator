@@ -2,8 +2,8 @@
 let inputBoxesEls = [];
 let labelEls = [];
 
-let selectedBox;
-
+let currentType = 'boyle';
+let currentVar = 1;
 // an array to store the input values
 let values = [];
 
@@ -48,12 +48,11 @@ const getLabels = function (type, index) {
     case 'ige':
       return igeLabels[index];
     default:
-      break;
   }
 };
 
 // HTML elements
-const calcBtn = document.getElementById('calcBtn');
+const calcBtn = document.querySelector('.calc-btn');
 const dropDownMenu = document.getElementById('ddMenu');
 const inputBox = document.querySelectorAll('.inputs');
 const boylesBtn = document.querySelector('.boyle-btn');
@@ -77,18 +76,47 @@ const getValues = function (arrObj, arrValues) {
   }
 };
 
-const calcBoylesLaw = function (values, resVar) {
-  switch (resVar) {
-    case 1:
-      return (values[2] * values[3]) / values[1];
-    case 2:
-      return (values[2] * values[3]) / values[0];
-    case 3:
-      return (values[0] * values[1]) / values[3];
-    case 4:
-      return (values[0] * values[1]) / values[2];
-    default:
-      return -1;
+const calcGasLaws = function (values, resVar, type) {
+  if (type == 'boyle') {
+    switch (resVar) {
+      case 1:
+        return (values[2] * values[3]) / values[1];
+      case 2:
+        return (values[2] * values[3]) / values[0];
+      case 3:
+        return (values[0] * values[1]) / values[3];
+      case 4:
+        return (values[0] * values[1]) / values[2];
+      default:
+        return -1;
+    }
+  } else if (type == 'ige') {
+    const R = 8.31;
+    switch (resVar) {
+      case 1: //P
+        return (values[2] * R * values[3]) / values[1];
+      case 2: //V
+        return (values[2] * R * values[3]) / values[0];
+      case 3: //n
+        return (values[0] * values[1]) / (R * values[3]);
+      case 4: //T
+        return (values[0] * values[1]) / (values[2] * R);
+      default:
+        return -1;
+    }
+  } else {
+    switch (resVar) {
+      case 1: //[0]
+        return (values[2] * values[1]) / values[3];
+      case 2: //[1]
+        return (values[3] * values[0]) / values[2];
+      case 3: //[2]
+        return (values[3] * values[0]) / values[1];
+      case 4: //[3]
+        return (values[2] * values[1]) / values[0];
+      default:
+        return -1;
+    }
   }
 };
 
@@ -98,9 +126,10 @@ fillInput(labelEls, 'label');
 //add event listener to calcBtn
 calcBtn.addEventListener('click', () => {
   getValues(inputBoxesEls, values);
-  inputBoxesEls[selectedBox - 1].value = calcBoylesLaw(
+  inputBoxesEls[currentVar - 1].value = calcGasLaws(
     values,
-    selectedBox
+    currentVar,
+    currentType
   ).toFixed(3);
 });
 
@@ -109,13 +138,11 @@ dropDownMenu.addEventListener('change', event => {
   for (i = 1; i < inputBoxesEls.length + 1; i++) {
     // clear input fields
     document.getElementById('input-' + i).value = '';
-    console.log(event.target.value);
-    console.log(document.getElementById('label-' + i).textContent);
     if (
       event.target.value + ': ' ==
       document.getElementById('label-' + i).textContent
     ) {
-      selectedBox = i;
+      currentVar = i;
       var elems = document.querySelectorAll('.result');
       elems.forEach(function (elems) {
         elems.classList.remove('result');
@@ -133,6 +160,7 @@ optBtn.forEach(item => {
   item.addEventListener('click', () => {
     for (let i = 0; i < labelEls.length; i++) {
       const type = item.className.substring(0, item.className.indexOf('-'));
+      currentType = type;
       // update the text content of the label elements
       labelEls[i].textContent = `${getLabels(type, i)}: `;
       // update the text of options of dropdown menu

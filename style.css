@@ -1,22 +1,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Shippori Antique B1', Arial, Helvetica, sans-serif;
+}
+
+[class^='box-'] {
+  border: dotted;
+  /* To place the letter at the center */
+  display: grid;
+  place-items: center;
+}
+
+.box-1 {
+  grid-area: A;
+}
+.box-2 {
+  grid-area: B;
+}
+.box-3 {
+  grid-area: C;
+}
+
+.container {
+  display: grid;
+  gap: 10px;
+  height: 100vh;
+  grid-template-columns: auto 20vh auto;
+  grid-template-rows: 15vh 75vh auto;
+  grid-template-areas:
+    'A A A A   A A A A   A A A A'
+    'B B B B   B B B B   B B B B'
+    'C C C C   C C C C   C C C C';
+  justify-items: center;
+}
+
 .result {
-  background-color: greenyellow;
+  background-color: rgb(129, 175, 59);
 }
 
 body {
-  font-family: 'Shippori Antique B1', Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
+  font-size: 40px;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(49, 49, 151, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: azure;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.btn {
+  display: inline-block;
+  margin: 20px;
+  margin-top: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  position: relative;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 1vh 2vh;
+  display: inline-block;
+  border-radius: 8px;
+  text-decoration: none;
+  border-style: none;
 }
 
 .opt-btn {
-  display: inline-block;
-  margin: 30px;
-  font-size: 17px;
-  text-transform: uppercase;
-  color: #000;
-  position: relative;
-  background-color: saddlebrown;
-  border-collapse: collapse;
+  background-color: aliceblue;
+  color: darkblue;
+}
+
+.btn:hover {
+  background-color: darkblue;
+  color: aliceblue;
+  transition-duration: 0.3s;
+}
+
+.title-1 {
+  justify-content: left;
+  align-content: left;
+}
+
+.title-2 {
+  font-size: 0.8em;
+}
+
+#ddMenu {
+  size: 4em;
+}
+
+.author {
+  font-size: 3vh;
+}
+.forms {
+  font-size: 4vh;
+}
+
+.calc-btn {
+  margin-left: 25%;
+  margin-top: 4%;
+  font: 17px;
+  background-color: rgb(206, 67, 67);
+}
+
+.calc-btn:hover {
+  background-color: aliceblue;
+  transition-duration: 0.4s;
+  color: darkblue;
+}
+
+.form1 {
+  font-size: 4vh;
+}
+
+.choose-legend {
+  display: inline-grid;
+  margin-right: 0.3vmax;
+  font-size: 2.5vh;
+  margin-bottom: 2vh;
+}
+
+.input {
+  display: -ms-inline-grid;
+  padding: 0.3rem;
+  margin-right: 1vh;
+  grid-row: auto;
+  margin-bottom: 0.3rem;
+  border: 2px solid darkblue;
+  font-size: 2.5vh;
+  width: fit-content;
+}
+
+/* #inputSection {
+  padding: 2vh;
+} */
+
+.label {
+  display: block;
+  font-size: 3.1vh;
+  margin-bottom: 0;
+}
+
+.lbl-unit {
+  margin-inline-end: 50px;
+  font-size: 3vh;
 }

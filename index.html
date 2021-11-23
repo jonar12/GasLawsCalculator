@@ -8,54 +8,77 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="logo">
-      <h1>The Ultimate Chemistry Calculator</h1>
-      <p>By Jonathan</p>
+    <section class="container">
+      <section class="box-1">
+        <section class="title-1">
+          <h1>Gas Laws Calculator</h1>
+          <p class="author">By Jonathan</p>
+        </section>
+        <!-- <section class="title-2">
+          <h1>Gas Laws Calculator</h1>
+        </section> -->
+      </section>
+      <!-- <section class="topnav">
+        <a class="active" href="#gaslaws">Gas Laws Calculator</a>
+        <a href="#solCon">Solution Concentration Calculator</a>
+      </section> -->
+      <main class="box-2">
+        <section class="btns">
+          <button type="button" class="boyle-btn opt-btn btn">
+            Boyle's Law
+          </button>
+          <button type="button" class="charles-btn opt-btn btn">
+            Charle's Law
+          </button>
+          <button type="button" class="gaylussac-btn opt-btn btn">
+            Gay-Lussac's Law
+          </button>
+          <button type="button" class="avogadro-btn opt-btn btn">
+            Avogadro's Law
+          </button>
+          <button type="button" class="ige-btn opt-btn btn">
+            Ideal Gas Equation
+          </button>
+        </section>
+        <section class="forms">
+          <form name="form1" class="form1" action="">
+            <p class="choose-legend">Choose the value you want to obtain:</p>
+            <select name="ddMenu" id="ddMenu">
+              <option value="Initial Pressure">Initial Pressure</option>
+              <option value="Initial Volume">Initial Volume</option>
+              <option value="Final Pressure">Final Pressure</option>
+              <option value="Final Volume">Final Volume</option>
+            </select>
+          </form>
+          <form id="inputSection" action="">
+            <label class="label" for="label-1" id="label-1"
+              >Initial Pressure:
+            </label>
+            <input class="input result" type="text" id="input-1" />
+            <label for="unit-1">kpa</label>
+            <br />
+            <label class="label" for="label-2" id="label-2"
+              >Initial Volume:
+            </label>
+            <input class="input" type="text" id="input-2" />
+            <label for="unit-1">L</label>
+            <br />
+            <label class="label" for="label-3" id="label-3"
+              >Final Pressure:
+            </label>
+            <input class="input" type="text" id="input-3" />
+            <label for="unit-1">kpa</label>
+            <br />
+            <label class="label" for="label-4" id="label-4"
+              >Final Volume:
+            </label>
+            <input class="input" type="text" id="input-4" />
+            <label for="unit-1">L</label>
+          </form>
+          <button type="button" class="btn calc-btn">Calculate</button>
+        </section>
+      </main>
     </section>
-    <section class="topnav">
-      <a class="active" href="#gaslaws">Gas Laws Calculator</a>
-      <a href="#solCon">Solution Concentration Calculator</a>
-    </section>
-    <section>
-      <h1>Gas Laws Calculator</h1>
-    </section>
-    <div>
-      <button type="button" class="boyle-btn opt-btn">Boyle's Law</button>
-      <button type="button" class="charles-btn opt-btn">Charle's Law</button>
-      <button type="button" class="gaylussac-btn opt-btn">
-        Gay-Lussac's Law
-      </button>
-      <button type="button" class="avogadro-btn opt-btn">Avogadro's Law</button>
-      <button type="button" class="ige-btn opt-btn">Ideal Gas Equation</button>
-    </div>
-    <form name="form1" id="form1" action="">
-      Choose the value you want to obtain:
-      <select name="ddMenu" id="ddMenu">
-        <option value="Initial Pressure">Initial Pressure</option>
-        <option value="Initial Volume">Initial Volume</option>
-        <option value="Final Pressure">Final Pressure</option>
-        <option value="Final Volume">Final Volume</option>
-      </select>
-    </form>
-    <form id="inputSection" action="">
-      <label for="label-1" id="label-1">Initial Pressure: </label>
-      <input class="inputs result" type="text" id="input-1" />
-      <label for="unit-1">kpa</label>
-      <br />
-      <label for="label-2" id="label-2">Initial Volume: </label>
-      <input class="inputs" type="text" id="input-2" />
-      <label for="unit-1">L</label>
-      <br />
-      <label for="label-3" id="label-3">Final Pressure: </label>
-      <input class="inputs" type="text" id="input-3" />
-      <label for="unit-1">kpa</label>
-      <br />
-      <label for="label-4" id="label-4">Final Volume: </label>
-      <input class="inputs" type="text" id="input-4" />
-      <label for="unit-1">L</label>
-    </form>
-    <br />
-    <button type="button" id="calcBtn">Calculate</button>
   </body>
   <script src="script.js"></script>
 </html>
