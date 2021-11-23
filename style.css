@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
+
+.result {
+  background-color: greenyellow;
+}
+
+body {
+  font-family: 'Shippori Antique B1', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.opt-btn {
+  display: inline-block;
+  margin: 30px;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #000;
+  position: relative;
+  background-color: saddlebrown;
+  border-collapse: collapse;
+}
