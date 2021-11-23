@@ -139,7 +139,7 @@ dropDownMenu.addEventListener('change', event => {
     // clear input fields
     document.getElementById('input-' + i).value = '';
     if (
-      event.target.value + ': ' ==
+      event.target.value + ':' ==
       document.getElementById('label-' + i).textContent
     ) {
       currentVar = i;
@@ -162,7 +162,7 @@ optBtn.forEach(item => {
       const type = item.className.substring(0, item.className.indexOf('-'));
       currentType = type;
       // update the text content of the label elements
-      labelEls[i].textContent = `${getLabels(type, i)}: `;
+      labelEls[i].textContent = `${getLabels(type, i)}:`;
       // update the text of options of dropdown menu
       dropDownMenu.options[i].text = getLabels(type, i);
       dropDownMenu.options[i].value = getLabels(type, i);

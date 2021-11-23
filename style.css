@@ -8,7 +8,7 @@
 }
 
 [class^='box-'] {
-  border: dotted;
+  /* border: dotted; */
   /* To place the letter at the center */
   display: grid;
   place-items: center;
