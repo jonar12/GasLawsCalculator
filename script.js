@@ -139,7 +139,7 @@ optBtn.forEach(item => {
       dropDownMenu.options[i].text = getLabels(type, i);
       dropDownMenu.options[i].value = getLabels(type, i);
       // reset the input fields
-      document.getElementById('input-' + i).value = '';
+      document.getElementById(`input-${i + 1}`).value = '';
     }
   });
 });
