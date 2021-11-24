@@ -8,8 +8,7 @@
 }
 
 [class^='box-'] {
-  /* border: dotted; */
-  /* To place the letter at the center */
+  border: dotted;
   display: grid;
   place-items: center;
 }
@@ -29,7 +28,7 @@
   gap: 10px;
   height: 100vh;
   grid-template-columns: auto 20vh auto;
-  grid-template-rows: 15vh 75vh auto;
+  grid-template-rows: 8vw 15vw auto;
   grid-template-areas:
     'A A A A   A A A A   A A A A'
     'B B B B   B B B B   B B B B'
@@ -37,12 +36,8 @@
   justify-items: center;
 }
 
-.result {
-  background-color: rgb(129, 175, 59);
-}
-
 body {
-  font-size: 40px;
+  font-size: 3em;
   background: rgb(2, 0, 36);
   background: radial-gradient(
     circle,
@@ -57,8 +52,8 @@ body {
 
 .btn {
   display: inline-block;
-  margin: 20px;
-  margin-top: 5px;
+  margin: 1.6em;
+  margin-top: 2em;
   font-size: 14px;
   text-transform: uppercase;
   position: relative;
@@ -91,8 +86,8 @@ body {
   font-size: 0.8em;
 }
 
-#ddMenu {
-  size: 4em;
+.ddMenu {
+  size: 1vh;
 }
 
 .author {
@@ -135,11 +130,12 @@ body {
   border: 2px solid darkblue;
   font-size: 2.5vh;
   width: fit-content;
+  background-color: aliceblue;
 }
 
-/* #inputSection {
-  padding: 2vh;
-} */
+.result {
+  background-color: rgb(129, 175, 59);
+}
 
 .label {
   display: block;

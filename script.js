@@ -1,13 +1,22 @@
-// an array of the HTML input objects
-let inputBoxesEls = [];
-let labelEls = [];
+// HTML elements
+const inputBoxesEls = document.querySelectorAll('.input');
+const labelEls = document.querySelectorAll('.label');
+const calcBtn = document.querySelector('.calc-btn');
+const dropDownMenu = document.querySelector('.ddMenu');
+const inputBox = document.querySelectorAll('.inputs');
+const boylesBtn = document.querySelector('.boyle-btn');
+const charlesBtn = document.querySelector('.charles-btn');
+const optBtn = document.querySelectorAll('.opt-btn');
+const lblUnit = document.querySelectorAll('.lbl-unit');
 
+// state variables to keep track of current type of law and current variable to calculate
 let currentType = 'boyle';
 let currentVar = 1;
-// an array to store the input values
+
+// array to store the input values
 let values = [];
 
-// arrays with label texts
+// arrays with the text of the labels for each type of law
 const boyleLabels = [
   'Initial Pressure',
   'Initial Volume',
@@ -34,7 +43,10 @@ const avogadroLabels = [
 ];
 const igeLabels = ['Pressure', 'Volume', 'Number of moles', 'Temperature'];
 
-// function to return arrays given an index
+// array containing the standard units
+const units = ['kpa', 'L', 'moles', 'K'];
+
+// function to return the correct label given the type and an index
 const getLabels = function (type, index) {
   switch (type) {
     case 'boyle':
@@ -48,21 +60,39 @@ const getLabels = function (type, index) {
     case 'ige':
       return igeLabels[index];
     default:
+      return -1;
   }
 };
 
-// HTML elements
-const calcBtn = document.querySelector('.calc-btn');
-const dropDownMenu = document.getElementById('ddMenu');
-const inputBox = document.querySelectorAll('.inputs');
-const boylesBtn = document.querySelector('.boyle-btn');
-const charlesBtn = document.querySelector('.charles-btn');
-const optBtn = document.querySelectorAll('.opt-btn');
-
-// Fill an array with the input boxes elements
-const fillInput = function (arr, type) {
-  for (let i = 1; i < 5; i++) {
-    arr[i - 1] = document.getElementById(`${type}-${i}`);
+// Determine and display the right units according to the type to every label (index)
+const determineUnits = function (type, index) {
+  if (type != 'ige') {
+    let unit1, unit2;
+    switch (type) {
+      case 'boyle':
+        unit1 = 1;
+        unit2 = 0;
+        break;
+      case 'charles':
+        unit1 = 3;
+        unit2 = 1;
+        break;
+      case 'gaylussac':
+        unit1 = 1;
+        unit2 = 0;
+        break;
+      case 'avogadro':
+        unit1 = 2;
+        unit2 = 1;
+        break;
+    }
+    if ((index + 1) % 2 == 0) {
+      lblUnit[index].textContent = units[unit1];
+    } else {
+      lblUnit[index].textContent = units[unit2];
+    }
+  } else {
+    lblUnit[index].textContent = units[index];
   }
 };
 
@@ -105,6 +135,7 @@ const calcGasLaws = function (values, resVar, type) {
         return -1;
     }
   } else {
+    // charles, gay-lussac's & avogadro's calculations
     switch (resVar) {
       case 1: //[0]
         return (values[2] * values[1]) / values[3];
@@ -119,9 +150,6 @@ const calcGasLaws = function (values, resVar, type) {
     }
   }
 };
-
-fillInput(inputBoxesEls, 'input');
-fillInput(labelEls, 'label');
 
 //add event listener to calcBtn
 calcBtn.addEventListener('click', () => {
@@ -139,7 +167,7 @@ dropDownMenu.addEventListener('change', event => {
     // clear input fields
     document.getElementById('input-' + i).value = '';
     if (
-      event.target.value + ':' ==
+      `${event.target.value}:` ==
       document.getElementById('label-' + i).textContent
     ) {
       currentVar = i;
@@ -155,12 +183,13 @@ dropDownMenu.addEventListener('change', event => {
   }
 });
 
-// change text of labels as I click on the btn
+// change text of labels as I click on the btn of each type of law
 optBtn.forEach(item => {
   item.addEventListener('click', () => {
+    const type = item.className.substring(0, item.className.indexOf('-'));
+    currentType = type;
+    // Loop through the label elements
     for (let i = 0; i < labelEls.length; i++) {
-      const type = item.className.substring(0, item.className.indexOf('-'));
-      currentType = type;
       // update the text content of the label elements
       labelEls[i].textContent = `${getLabels(type, i)}:`;
       // update the text of options of dropdown menu
@@ -168,6 +197,8 @@ optBtn.forEach(item => {
       dropDownMenu.options[i].value = getLabels(type, i);
       // reset the input fields
       document.getElementById(`input-${i + 1}`).value = '';
+      //change the units
+      determineUnits(type, i);
     }
   });
 });
