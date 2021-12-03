@@ -14,6 +14,8 @@ input[type='number'] {
 
 :root {
   --labels-size: 0.6em;
+  --primary-color: aliceblue;
+  --secondary-color: darkblue;
 }
 
 * {
@@ -57,7 +59,7 @@ body {
     rgba(49, 49, 151, 1) 35%,
     rgba(0, 212, 255, 1) 100%
   );
-  color: azure;
+  color: var(--primary-color);
   width: 100%;
   min-height: 100vh;
 }
@@ -74,17 +76,23 @@ body {
   text-decoration: none;
   border-style: none;
   box-shadow: 2em;
+  cursor: pointer;
 }
 
 .opt-btn {
-  background-color: aliceblue;
-  color: darkblue;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .btn:hover {
-  background-color: darkblue;
-  color: aliceblue;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   transition: ease-in-out 0.3s;
+}
+
+.selected {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .title-1 {
@@ -99,25 +107,30 @@ body {
 .ddMenu {
   size: 1rem;
   font-size: var (--labels-size);
+  cursor: pointer;
+  background-color: var(--primary-color);
+  border-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: black;
 }
 
 .author {
-  font-size: 3vh;
+  font-size: 0.7em;
 }
 
 .choose-legend {
-  display: inline-grid;
-  margin-right: 0.3vmax;
+  display: inline-flex;
+  margin-right: 0.2em;
   font-size: var(--labels-size);
-  margin-bottom: 0.7em;
+  margin-bottom: 0.8em;
 }
 
 .input {
   padding: 0.1rem;
   margin-bottom: 0.5em;
-  border: 2px solid darkblue;
+  border: 2px solid var(--secondary-color);
   font-size: 0.6em;
-  background-color: aliceblue;
+  background-color: var(--primary-color);
   border-radius: 8px;
 }
 
@@ -139,7 +152,7 @@ body {
   font-size: 1.8rem;
   align-items: center;
   justify-items: center;
-  background-color: aliceblue;
+  background-color: var(--primary-color);
   color: black;
   padding: 0.2em 1em 0.6em 1em;
   box-shadow: 30px;

@@ -188,12 +188,14 @@ optBtn.forEach(item => {
       //change the units
       determineUnits(type, i);
     }
+    // remove the selected class from all btns
+    [].forEach.call(document.querySelectorAll('.selected'), function (el) {
+      el.classList.remove('selected');
+    });
+    // add a selected class to the selected btn
+    item.classList.add('selected');
   });
 });
-
-const foo = function () {
-  console.log('here');
-};
 
 // add same event listener but on change of the input fields
 inputBoxesEls.forEach(item => {
