@@ -1,9 +1,7 @@
 // HTML elements
 const inputBoxesEls = document.querySelectorAll('.input');
 const labelEls = document.querySelectorAll('.label');
-const calcBtn = document.querySelector('.calc-btn');
 const dropDownMenu = document.querySelector('.ddMenu');
-const inputBox = document.querySelectorAll('.inputs');
 const boylesBtn = document.querySelector('.boyle-btn');
 const charlesBtn = document.querySelector('.charles-btn');
 const optBtn = document.querySelectorAll('.opt-btn');
@@ -151,16 +149,6 @@ const calcGasLaws = function (values, resVar, type) {
   }
 };
 
-//add event listener to calcBtn
-calcBtn.addEventListener('click', () => {
-  getValues(inputBoxesEls, values);
-  inputBoxesEls[currentVar - 1].value = calcGasLaws(
-    values,
-    currentVar,
-    currentType
-  ).toFixed(3);
-});
-
 //add event listener to dropDownMenu
 dropDownMenu.addEventListener('change', event => {
   for (i = 1; i < inputBoxesEls.length + 1; i++) {
@@ -201,4 +189,21 @@ optBtn.forEach(item => {
       determineUnits(type, i);
     }
   });
+});
+
+const foo = function () {
+  console.log('here');
+};
+
+// add same event listener but on change of the input fields
+inputBoxesEls.forEach(item => {
+  item.oninput = () => {
+    getValues(inputBoxesEls, values);
+    const result = calcGasLaws(values, currentVar, currentType).toFixed(3);
+    if (!isNaN(result)) {
+      inputBoxesEls[currentVar - 1].value = result;
+    } else {
+      inputBoxesEls[currentVar - 1].value = '';
+    }
+  };
 });

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 
+:root {
+  --labels-size: 0.6em;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,20 +23,16 @@
 .box-2 {
   grid-area: B;
 }
-.box-3 {
-  grid-area: C;
-}
 
 .container {
   display: grid;
-  gap: 10px;
-  height: 100vh;
+  gap: 0.1vh;
+  height: 50vh;
   grid-template-columns: auto 20vh auto;
-  grid-template-rows: 8vw 15vw auto;
+  grid-template-rows: 8vw auto;
   grid-template-areas:
     'A A A A   A A A A   A A A A'
-    'B B B B   B B B B   B B B B'
-    'C C C C   C C C C   C C C C';
+    'B B B B   B B B B   B B B B';
   justify-items: center;
 }
 
@@ -51,19 +51,17 @@ body {
 }
 
 .btn {
-  display: inline-block;
-  margin: 1.6em;
-  margin-top: 2em;
-  font-size: 14px;
+  display: inline-flexbox;
+  margin: 1em;
+  font-size: 0.3em;
   text-transform: uppercase;
-  position: relative;
   border-collapse: collapse;
   text-align: center;
   padding: 1vh 2vh;
-  display: inline-block;
   border-radius: 8px;
   text-decoration: none;
   border-style: none;
+  box-shadow: 2em;
 }
 
 .opt-btn {
@@ -74,7 +72,7 @@ body {
 .btn:hover {
   background-color: darkblue;
   color: aliceblue;
-  transition-duration: 0.3s;
+  transition: ease-in-out 0.3s;
 }
 
 .title-1 {
@@ -87,50 +85,28 @@ body {
 }
 
 .ddMenu {
-  size: 1vh;
+  size: 1rem;
+  font-size: var (--labels-size);
 }
 
 .author {
   font-size: 3vh;
 }
-.forms {
-  font-size: 4vh;
-}
-
-.calc-btn {
-  margin-left: 25%;
-  margin-top: 4%;
-  font: 17px;
-  background-color: rgb(206, 67, 67);
-}
-
-.calc-btn:hover {
-  background-color: aliceblue;
-  transition-duration: 0.4s;
-  color: darkblue;
-}
-
-.form1 {
-  font-size: 4vh;
-}
 
 .choose-legend {
   display: inline-grid;
   margin-right: 0.3vmax;
-  font-size: 2vh;
-  margin-bottom: 2vh;
+  font-size: var(--labels-size);
+  margin-bottom: 0.7em;
 }
 
 .input {
-  display: -ms-inline-grid;
-  margin-top: 0;
   padding: 0.1rem;
-  margin-right: 0.5vh;
-  grid-row: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
   border: 2px solid darkblue;
-  font-size: 2.5vh;
+  font-size: 0.6em;
   background-color: aliceblue;
+  border-radius: 8px;
 }
 
 .result {
@@ -138,11 +114,22 @@ body {
 }
 
 .label {
-  display: block;
-  font-size: 2.5vh;
+  display: flex;
+  font-size: 0.6em;
 }
 
 .lbl-unit {
-  margin-inline-end: 50px;
-  font-size: 2.2vh;
+  font-size: 0.6em;
+}
+
+.forms {
+  margin-top: 1em;
+  font-size: 1.8rem;
+  align-items: center;
+  justify-items: center;
+  background-color: aliceblue;
+  color: black;
+  padding: 0.2em 1em 0.6em 1em;
+  box-shadow: 30px;
+  border-radius: 8px;
 }
