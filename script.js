@@ -62,7 +62,7 @@ const getLabels = function (type, index) {
   }
 };
 
-// Determine and display the right units according to the type to every label (index)
+// determine the right units according to the type to every label (index)
 const determineUnits = function (type, index) {
   if (type != 'ige') {
     let unit1, unit2;
@@ -94,16 +94,18 @@ const determineUnits = function (type, index) {
   }
 };
 
-const getValues = function (arrObj, arrValues) {
-  for (let i = 0; i < arrObj.length; i++) {
-    //check if box is read only
-    if (arrObj[i].classList.contains('result')) {
+// get values from user input, given an array of elements and an array of values
+const getValues = function (arrEls, arrValues) {
+  for (let i = 0; i < arrEls.length; i++) {
+    //check if box is the one that will display the result
+    if (arrEls[i].classList.contains('result')) {
       continue;
     }
-    arrValues[i] = parseFloat(arrObj[i].value);
+    arrValues[i] = parseFloat(arrEls[i].value);
   }
 };
 
+// master function to perform the calculations given an array of values, the variable of to obtain, and the type of law
 const calcGasLaws = function (values, resVar, type) {
   if (type == 'boyle') {
     switch (resVar) {
@@ -158,15 +160,18 @@ dropDownMenu.addEventListener('change', event => {
       `${event.target.value}:` ==
       document.getElementById('label-' + i).textContent
     ) {
+      //change the selected variable
       currentVar = i;
+      // remove the result class, readonly property to false and clear the input for every input box
       var elems = document.querySelectorAll('.result');
-      elems.forEach(function (elems) {
-        elems.classList.remove('result');
-        elems.readOnly = false;
-        elems.textContent = '';
+      elems.forEach(function (el) {
+        el.classList.remove('result');
+        el.readOnly = false;
+        el.textContent = '';
       });
-      inputBoxesEls[i - 1].classList.add('result');
-      inputBoxesEls[i - 1].readOnly = true;
+      // add the result class and the readonly property to true for the selected
+      inputBoxesEls[currentVar - 1].classList.add('result');
+      inputBoxesEls[currentVar - 1].readOnly = true;
     }
   }
 });
@@ -197,7 +202,7 @@ optBtn.forEach(item => {
   });
 });
 
-// add same event listener but on change of the input fields
+// add an event listener on change of the input fields to calculate the result
 inputBoxesEls.forEach(item => {
   item.oninput = () => {
     getValues(inputBoxesEls, values);
